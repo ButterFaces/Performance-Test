@@ -33,22 +33,29 @@
         </style>
 
         <h:form styleClass="container" prependId="false">
-            <b:section id="listItems" label="performance test">
-                <ui:repeat value="#{indexBean.items}" var="item">
-                    <div class="flexContainer">
-                        <b:text value="#{item.name}" hideLabel="true">
-                            <f:ajax event="blur" execute="@this" render="listItems"/>
-                        </b:text>
-                        <b:text value="#{item.description}" hideLabel="true">
-                            <f:ajax event="blur" execute="@this" render="listItems"/>
-                        </b:text>
-                    </div>
-                </ui:repeat>
+            <b:section label="performance test">
+
+                <b:commandLink value="Add" action="#{indexBean.addItem}" styleClass="btn btn-default" ajaxDisableRenderRegionsOnRequest="false">
+                    <f:ajax execute="@this" render="listItems" />
+                </b:commandLink>
+
+                <h:panelGroup id="listItems" layout="block">
+                    <ui:repeat value="#{indexBean.items}" var="item">
+                        <div class="flexContainer">
+                            <b:text value="#{item.name}" hideLabel="true">
+                                <f:ajax event="blur" execute="@this" render="listItems"/>
+                            </b:text>
+                            <b:text value="#{item.description}" hideLabel="true">
+                                <f:ajax event="blur" execute="@this" render="listItems"/>
+                            </b:text>
+                        </div>
+                    </ui:repeat>
+                </h:panelGroup>
             </b:section>
         </h:form>
 
         <b:activateLibraries/>
-        <b:waitingPanel />
+        <b:waitingPanel/>
 
     </f:view>
 </h:body>

@@ -21,6 +21,10 @@ public class IndexBean implements Serializable {
         );
     }
 
+    public void addItem() {
+        items.add(new ListItem("just-added", "just-added"));
+    }
+
     public List<ListItem> getItems() {
         return items;
     }
