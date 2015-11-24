@@ -26,22 +26,33 @@
 <h:body styleClass="body">
     <f:view>
 
-        <b:section label="performance measurement" styleClass="container">
-            Here you can find some performance measurements.
+        <style type="text/css">
+            .flexContainer {
+                display: flex;
+            }
+        </style>
 
-            <ul>
-                <li>
-                    <a href="repeat.jsf" target="_blank">
-                        18.000 input fields in a ui:repeat
-                    </a>
-                </li>
-                <li>
-                    <a href="table.jsf" target="_blank">
-                        18.000 input fields in a b:table
-                    </a>
-                </li>
-            </ul>
-        </b:section>
+        <h:form styleClass="container" prependId="false">
+            <b:section label="performance test">
+
+                <b:commandLink value="Add" action="#{indexBean.addItem}" styleClass="btn btn-default" ajaxDisableRenderRegionsOnRequest="false">
+                    <f:ajax execute="@this" render="listItems" />
+                </b:commandLink>
+
+                <h:panelGroup id="listItems" layout="block">
+                    <ui:repeat value="#{indexBean.items}" var="item">
+                        <div class="flexContainer">
+                            <b:text value="#{item.name}" hideLabel="true">
+                                <f:ajax event="blur" execute="@this" render="listItems"/>
+                            </b:text>
+                            <b:text value="#{item.description}" hideLabel="true">
+                                <f:ajax event="blur" execute="@this" render="listItems"/>
+                            </b:text>
+                        </div>
+                    </ui:repeat>
+                </h:panelGroup>
+            </b:section>
+        </h:form>
 
         <b:activateLibraries/>
         <b:waitingPanel/>
