@@ -44,7 +44,7 @@
 
         <javax.javaee-api.version>7.0</javax.javaee-api.version>
 
-        <butterfaces.version>1.9.9</butterfaces.version>
+        <butterfaces.version>1.9.10-SNAPSHOT</butterfaces.version>
     </properties>
 
     <dependencies>
