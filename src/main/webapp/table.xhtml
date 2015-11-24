@@ -26,12 +26,6 @@
 <h:body styleClass="body">
     <f:view>
 
-        <style type="text/css">
-            .flexContainer {
-                display: flex;
-            }
-        </style>
-
         <h:form styleClass="container" prependId="false">
             <b:section label="performance test">
 
@@ -39,16 +33,22 @@
                     <f:ajax execute="@this" render="listItems" />
                 </b:commandLink>
 
+                <b:commandLink value="Refresh" styleClass="btn btn-default" ajaxDisableRenderRegionsOnRequest="false">
+                    <f:ajax execute="@none" render="listItems" />
+                </b:commandLink>
+
                 <h:panelGroup id="listItems" layout="block">
                     <b:table var="item" value="#{indexBean.items}">
                         <b:column label="Name">
                             <b:text value="#{item.name}" hideLabel="true">
                                 <f:ajax event="blur" execute="@this" render="listItems"/>
+                                <f:validateLength minimum="2" maximum="10" />
                             </b:text>
                         </b:column>
                         <b:column label="Description">
                             <b:text value="#{item.description}" hideLabel="true">
                                 <f:ajax event="blur" execute="@this" render="listItems"/>
+                                <f:validateLength minimum="2" maximum="10" />
                             </b:text>
                         </b:column>
                     </b:table>
