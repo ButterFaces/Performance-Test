@@ -16,7 +16,7 @@ public class IndexBean implements Serializable {
     
     @PostConstruct
     public void init() {
-        IntStream.range(0, 399).forEach(
+        IntStream.range(0, 9000).forEach(
                 index -> items.add(new ListItem("name" + index, "description" + index))
         );
     }
